@@ -1,0 +1,33 @@
+# 更改前缀
+unbind C-b
+set -g prefix C-a
+set -g base-index 1
+setw -g pane-base-index 1
+# 设置256色模式
+set -g default-terminal "screen-256color"
+
+# 重新加载配置文件
+bind r source-file ~/.tmux.conf \; display "Roloaded config!"
+
+# 向其他程序发送 Ctrl-a
+bind C-a send-prefix
+
+# 分割pane
+bind | split-window -h
+bind - split-window -v
+
+# 在pane之间移动
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
+# 调整pane大小
+bind H resize-pane -L 5
+bind J resize-pane -D 5
+bind k resize-pane -U 5
+bind L resize-pane -R 5
+
+# 在window之间移动
+bind -r C-h select-window -t :-
+bind -r C-l select-window -t :+
