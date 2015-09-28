@@ -1,13 +1,39 @@
 # 更改前缀
-unbind C-b
-set -g prefix C-a
+#unbind C-b
+#set -g prefix C-b
 set -g base-index 1
 setw -g pane-base-index 1
-# 设置256色模式
-set -g default-terminal "screen-256color"
 
 # 重新加载配置文件
 bind r source-file ~/.tmux.conf \; display "Roloaded config!"
+
+# 设置256色模式
+set -g default-terminal "screen-255color"
+
+# 设置配色
+
+# 状态栏
+set -g status-fg white
+set -g status-bg black
+
+# 命令行
+set -g message-fg white
+set -g message-bg black
+set -g message-attr bright
+
+
+# 窗口列表
+setw -g window-status-current-fg white
+setw -g window-status-current-bg red
+setw -g window-status-current-attr bright
+
+# pane color
+set -g pane-border-fg green
+set -g pane-border-bg black
+set -g pane-active-border-fg white
+set -g pane-active-border-bg yellow
+
+
 
 # 向其他程序发送 Ctrl-a
 bind C-a send-prefix
@@ -25,9 +51,11 @@ bind l select-pane -R
 # 调整pane大小
 bind H resize-pane -L 5
 bind J resize-pane -D 5
-bind k resize-pane -U 5
+bind K resize-pane -U 5
 bind L resize-pane -R 5
 
 # 在window之间移动
 bind -r C-h select-window -t :-
 bind -r C-l select-window -t :+
+
+# 配置状态栏
