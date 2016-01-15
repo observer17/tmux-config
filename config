@@ -75,7 +75,10 @@ set -g status-interval 60
 # 窗口列表居中
 set -g status-justify centre
 
-
+# 设置鼠标模式
+setw -g mode-mouse on
+set -g mouse-select-pane on
+set -g mouse-resize-pane on
 # script
 #toggle_mouse() {
 #  if (tmux show -g -w |grep -q mode-mouse); then
