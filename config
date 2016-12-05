@@ -12,25 +12,43 @@ setw -g pane-base-index 1
 # 重新加载配置文件
 bind r source-file ~/.tmux.conf \; display "configuration Roloaded!"
 
-# 设置256色模式
-set -g default-terminal "screen-256color"
-
-# 设置配色
-# 状态栏
-set -g status-style fg=white,bg=black
-# 命令行
-set -g message-command-style fg=white,bg=black,bright
-# 窗口列表
-setw -g window-status-current-style fg=white,bg=colour33
-# pane color
-set -g pane-border-style fg=white,bg=black
-set -g pane-active-border-style fg=colour087,bg=black
+# 向其他程序发送 Ctrl-a
+bind C-a send-prefix
 
 #copy-mode 将快捷键设置为vi 模式
 setw -g mode-keys vi
 
-# 向其他程序发送 Ctrl-a
-bind C-a send-prefix
+# 设置256色模式
+set -g default-terminal "screen-256color"
+
+# status line
+# window status
+setw -g window-status-style fg=colour138,bg=colour235
+setw -g window-status-current-style fg=colour87,bg=colour238,bold
+setw -g window-status-format " #I#[fg=colour237]: #[fg=colour250]#W#[fg=colour244]#F "
+setw -g window-status-current-format " #I#[fg=colour250]: #[fg=colour255]#W#[fg=colour50]#F "
+# left & right
+set -g status-style fg=colour137,bg=234,dim
+set -g status-left-length 40
+set -g status-left "#[fg=colour233,bg=colour245,bold]Session: #S"
+set -g status-right "#[fg=colour233,bg=colour241,bold] %d/%m #[fg=colour233,bg=colour245,bold]%H:%M:%S"
+# 状态栏刷新周期
+set -g status-interval 60
+# 窗口列表居中
+set -g status-justify centre
+# 命令行
+set -g message-command-style fg=white,bg=black,bright
+
+
+# pane color
+set -g pane-border-style fg=white,bg=black
+set -g pane-active-border-style fg=colour087,bg=black
+
+
+# clock
+setw -g clock-mode-colour colour39
+setw -g clock-mode-style 24
+
 
 # 分割pane
 unbind '"'
@@ -53,15 +71,6 @@ bind L resize-pane -R 5
 # 在window之间移动
 bind -r C-h select-window -t :-
 bind -r C-l select-window -t :+
-
-# 配置状态栏
-set -g status-left-length 40
-set -g status-left "#[fg=green]Session: #S #[fg=yellow]Window:#I #[fg=cyan]Pane:#P"
-set -g status-right "#[fg=cyan]%d %b %R"
-# 状态栏刷新周期
-set -g status-interval 60
-# 窗口列表居中
-set -g status-justify centre
 
 # 设置鼠标模式
 #setw -g mode-mouse on
