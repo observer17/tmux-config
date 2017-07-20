@@ -1,8 +1,7 @@
 #
 #  author: wangxiao <wangxiao_hi@outlook.com>
-#  modified: 2015 oct 20
+#  modified: 2017 july 19
 #
-
 # 更改前缀
 #unbind C-b
 #set -g prefix C-a
@@ -108,3 +107,11 @@ bind -r C-l select-window -t :+
 #        display "mouse: $new"
 # fi
 #}
+#
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'odedlaz/tmux-onedark-theme'
+
+# Initialize Tmux Plugin manager
+run '~/.tmux/plugins/tpm/tpm';
